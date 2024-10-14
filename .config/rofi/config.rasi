@@ -1,0 +1,98 @@
+configuration {
+	modes:				[ combi ,window,drun,run];
+  	//combi-modes:			[ window, drun, run ];
+	font:				"Rubik 10";
+	display-drun: 			"";
+	drun-display-format:            "{icon}{name}";
+	sidebar-mode: 			false;
+	show-icons:			true;
+}
+
+@theme "/dev/null"
+@import "~/.cache/wal/colors-rofi-light.rasi"
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+* {
+//	bg:				#061115;
+//	fg:				#d9d7d6;
+//	button:				#0b151a;
+
+	background-color:		@background;
+	text-color:			@foreground;
+	border-radius:			10px;
+}
+
+window {
+	transparency:                   "real";
+	width:			    	40%;
+	border-radius:			08px;
+	border:				1px;
+	border-color:			@selected-active-background;
+}
+
+prompt { enabled: true; }
+
+entry {
+	placeholder:			"Search";
+	placeholder-color:              @foreground;
+	expand:                         true;
+	padding:                        1.5%;
+	border-radius:			8px;
+	cursor-color:			@active-foreground;
+	//cursor-width:			8px;
+
+}
+
+inputbar {
+	children: 			[ prompt, entry  ];
+	background-image:               url("/home/kazzu/wallpapers/pc.jpg");
+	expand:                         false;
+	border-radius:                  10px;
+	padding:                        100px 30px 30px 300px;
+
+}
+listview {
+	columns:                        2;
+	lines:	                        4;
+	cycle:                          false;
+	dynamic:                        true;
+	layout:                         vertical;
+	padding:			3px 3px 3px 3px;
+	scrollbar: true;
+}
+
+mainbox { children: [ inputbar, listview ]; }
+
+element {
+	orientation:                    horizontal;
+	children:			[element-icon, element-text ];
+	spacing:			5px;
+	//padding:                        0.5% 0% 0.5% 0%;
+	border-radius:			8px;
+	//size:				5px 5px 5px 5px;
+	margin:				0;
+}
+element-icon {
+    background-color:			transparent;
+    size:				1.5em;
+    padding:				10px;
+    border-radius:			100%;
+    margin:				10px;
+
+}
+
+element-text {
+	size:				1.5em;
+	expand:                         true;
+	vertical-align:                 0.5;
+	margin:                         0.5% 3% 0% 3%;
+	background-color: 		transparent;
+	text-color:       		@normal-foreground;
+	//text-color:			@alternate-normal-background;
+
+}
+
+element selected {
+	background-color:               @selected-normal-background;
+	border-radius:                  8px;
+	text-color:			@active-normal-foreground;
+}
